@@ -12,7 +12,6 @@ public class Main {
             System.out.println(mealOrder.drink.getDrinkPrice());
             System.out.println("Your total price is: " + mealOrder.getToppingsPrice() + mealOrder.getBurger().getBurgerPrice()); //:D
             System.out.println("Your order is: A " + mealOrder.getBurger() + " with extra " + mealOrder.getAllToppings());
-        System.out.println("");
         }
     }
 
