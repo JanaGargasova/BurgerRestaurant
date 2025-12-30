@@ -8,10 +8,6 @@ public class Drink {
         this.drinkPrice = drinkPrice;
         this.size = size;
     }
-    public Drink(String size, double drinkPrice) {
-        this.drinkPrice = drinkPrice;
-        this.size = size;
-    }
 
     public Drink() {
     }

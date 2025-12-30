@@ -11,12 +11,6 @@ public class MealOrder {
 
     public MealOrder() {
     }
-    public MealOrder(Burger burger) {
-        this.burger = burger;
-    }
-    public MealOrder(Toppings toppings) {
-        this.toppings = toppings;
-    }
     public Burger getBurger() {
         return burger;
     }
@@ -30,21 +24,24 @@ public class MealOrder {
         return allToppings;
     }
 
-    public Drink getDrink() {
-        return drink;
-    }
-
     Scanner s = new Scanner(System.in);
 
+
     public void createBurger() {
-        System.out.println("Choose your burger (Hamburger for 1$/Cheeseburger for 2$/Tastyburger for 3$).");
-        String burgerName = s.nextLine();
-        burger = switch (burgerName.toLowerCase()) {
-            case "hamburger" -> new Hamburger("Hamburger");
-            case "cheeseburger" -> new Cheeseburger("Cheeseburger");
-            case "tastyburger" -> new BigTasty("Tastyburger");
-            default -> new Hamburger("Hamburger");
-        };
+        System.out.println("First, choose your burger: Hamburger/Cheeseburger/Tastyburger.");
+        String burgerName;
+        while (burger == null) {
+            burgerName = s.nextLine();
+            burger = switch (burgerName.toLowerCase()) {
+                case "hamburger" ->  new Hamburger("Hamburger");
+                case "cheeseburger" -> new Cheeseburger("Cheeseburger");
+                case "tastyburger" -> new BigTasty("Tastyburger");
+                default -> {
+                    System.out.println("Incorrect input, please enter one of the choices: Hamburger/Cheeseburger/Tastyburger.");
+                    yield null; //chová se "jako" return
+                }
+            };
+        }
     }
     public void setToppingsCount() {
 
@@ -55,9 +52,10 @@ public class MealOrder {
             switch (yesOrNot) {
                 case "YES" -> {
                     while (true) {
-                            System.out.print("Enter the number of toppings you want. The total number should not " +
-                                    "exceed 3: ");
-                            toppingsCount = s.nextInt();
+                        System.out.print("Enter the number of toppings you want. The total number should not " +
+                                "exceed 3: ");
+                        toppingsCount = s.nextInt();
+                        s.nextLine();
                         if (toppingsCount > 3) {
                             System.out.println("You entered a number greater than 3. Please try again");
                             continue;
@@ -73,7 +71,7 @@ public class MealOrder {
                 case "NO" -> toppingsCount = 0;
                 default -> {
                     System.out.println("Incorrect entry, please try again.");
-                    continue;
+                    break;
                 }
             }
             break;
@@ -93,12 +91,8 @@ public class MealOrder {
         }
     }
     public void orderDrink () {
-        while (true) {
             System.out.println("Enter type of your drink. (Cola/Fanta/Sprite)");
             String type = s.nextLine();
-            if ("Qq".contains(type)) {
-                break;
-            }
             System.out.println("Enter its size.");
             String size = s.nextLine();
             drink = switch (size.toLowerCase()) {
@@ -107,7 +101,5 @@ public class MealOrder {
                 case "large" -> new Drink(type, 1.89, "Large");
                 default -> new Drink();
             };
-            break;
-        }
     }
 }

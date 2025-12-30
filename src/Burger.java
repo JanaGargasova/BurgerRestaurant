@@ -2,6 +2,9 @@ public class Burger {
     private String type;
     private double burgerPrice;
 
+    public Burger() {
+    }
+
     public Burger(String type, double burgerPrice) {
         this.type = type;
         this.burgerPrice = burgerPrice;
