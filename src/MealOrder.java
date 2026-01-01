@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class MealOrder {
@@ -43,18 +44,25 @@ public class MealOrder {
             };
         }
     }
-    public void setToppingsCount() {
 
-        while (true) {
+    public void setToppingsCount() {
+        String yesOrNot = null;
+        while (yesOrNot == null) {
             System.out.print("Would you like to add any toppings? (Yes / No): ");
-            String yesOrNot = s.nextLine().toUpperCase();
+            yesOrNot = s.nextLine().toUpperCase();
 
             switch (yesOrNot) {
                 case "YES" -> {
+                    System.out.print("Enter the number of toppings you want. The total number should not " +
+                            "exceed 3: ");
                     while (true) {
-                        System.out.print("Enter the number of toppings you want. The total number should not " +
-                                "exceed 3: ");
-                        toppingsCount = s.nextInt();
+                        try {
+                            toppingsCount = s.nextInt();
+                        } catch (InputMismatchException e) {
+                            System.out.println("Incorrect input please enter a number between 0-3.");
+                            s.nextLine();
+                            continue;
+                        }
                         s.nextLine();
                         if (toppingsCount > 3) {
                             System.out.println("You entered a number greater than 3. Please try again");
@@ -71,12 +79,12 @@ public class MealOrder {
                 case "NO" -> toppingsCount = 0;
                 default -> {
                     System.out.println("Incorrect entry, please try again.");
-                    break;
+                    yesOrNot = null;
                 }
             }
-            break;
         }
     }
+
     public void setToppingPrice(int toppingsCount) {
 
         toppingsPrice = 0;
