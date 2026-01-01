@@ -6,7 +6,7 @@ public class Main {
             MealOrder mealOrder = new MealOrder();
             mealOrder.createBurger();
 //            System.out.println(mealOrder.getBurger().getBurgerPrice());
-            mealOrder.setToppingsCount();
+            mealOrder.askWantsToppings();
             mealOrder.setToppingPrice(mealOrder.getToppingsCount());
             mealOrder.orderDrink();
             System.out.println(mealOrder.drink.getDrinkPrice());
