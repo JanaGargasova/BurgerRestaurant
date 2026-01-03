@@ -12,12 +12,12 @@ public class Toppings {
 
     public static Toppings getTopping(String topping) {
         return switch (topping.toLowerCase()) {
-            case "bacon" -> new BaconTopping("Bacon");
-            case "cheese" -> new CheeseTopping("Cheese");
-            case "onion" -> new OnionTopping("Onion");
-            case "radish" -> new RadishTopping("Radish");
-            default -> new Toppings();
-        };
+                case "bacon" -> new BaconTopping("Bacon");
+                case "cheese" -> new CheeseTopping("Cheese");
+                case "onion" -> new OnionTopping("Onion");
+                case "radish" -> new RadishTopping("Radish");
+                default -> new Toppings();
+            };
     }
 
     public double getToppingPrice() {
