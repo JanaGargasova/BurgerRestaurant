@@ -122,9 +122,9 @@ public class MealOrder {
         while (drink == null) {
             size = s.nextLine();
             drink = switch (size.toLowerCase()) {
-                case "small" -> new Drink(drinkType, 0.99, "Small");
-                case "medium" -> new Drink(drinkType, 1.59, "Medium");
-                case "large" -> new Drink(drinkType, 1.89, "Large");
+                case "small" -> new Drink(drinkType, 0.99, "small");
+                case "medium" -> new Drink(drinkType, 1.59, "medium");
+                case "large" -> new Drink(drinkType, 1.89, "large");
                 default -> {
                     System.out.println("Incorrect input, please enter drink size small/large/medium.");
                     yield null;

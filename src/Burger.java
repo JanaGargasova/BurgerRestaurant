@@ -13,6 +13,10 @@ public class Burger {
     public double getBurgerPrice() {
         return burgerPrice;
     }
+
+    public String getType() {
+        return type;
+    }
 }
 
 class Hamburger extends Burger {
