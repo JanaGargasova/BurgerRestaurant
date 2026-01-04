@@ -8,14 +8,15 @@ public class Menu {
 
     public void getMenu() {
 
-            Scanner s = new Scanner(System.in);
-            System.out.println("Hi dear and welcome in our Burger restaurant. Would you like to order? (Yes / No)");
-            String yesOrNo = s.nextLine().toUpperCase();
+        Scanner s = new Scanner(System.in);
+        System.out.println("Hi dear and welcome in our Burger restaurant. Would you like to order? (Yes / No)");
+        String yesOrNo = null;
 
-            while (true) {
-                switch (yesOrNo) {
-                    case "YES" -> {
-                        System.out.println("""
+        while (yesOrNo == null) {
+            yesOrNo = s.nextLine().toUpperCase();
+            switch (yesOrNo) {
+                case "YES" ->
+                    System.out.println("""
                                 
                                             \nBurger Restaurant menu:
                                             Burgers:
@@ -32,22 +33,16 @@ public class Menu {
                                                 2. Fanta (S/M/L) ------------ 0.99/1.59/1.89$
                                                 3. Sprite (S/M/L) ----------- 0.99/1.59/1.89$
                                 """);
-                        break;
-                    }
-                    case "NO" -> {
-                        System.out.println("Never mind, see you next time!");
-                        System.exit(0);
-                    }
-                    default -> {
-                        System.out.println("Incorrect entry, please try again. Enter either Yes or No.");
-                        yesOrNo = s.nextLine().toUpperCase();
-                        continue;
-                    }
+                case "NO" -> {
+                    System.out.println("Never mind, see you next time!");
+                    System.exit(0);
                 }
-                if (yesOrNo.equals("YES") || yesOrNo.equals("NO")) {
-                    break;
+                default -> {
+                    System.out.println("Incorrect entry, please try again. Enter either Yes or No.");
+                    yesOrNo = null;
                 }
             }
+        }
 
     }
 }
