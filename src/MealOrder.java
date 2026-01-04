@@ -91,6 +91,10 @@ public class MealOrder {
         while (toppingsCount != 0) {
             System.out.println("Enter your desired topping: ");
             Toppings topping = Toppings.getTopping(s.nextLine());
+            while (topping == null) {
+                System.out.println("Incorrect input, please choose one of the toppings: bacon/cheese/onion/radish.");
+                topping = Toppings.getTopping(s.nextLine());
+            }
             allToppings += (allToppings.isEmpty()) ? topping.getTopping() : "|" + topping.getTopping();
             toppingsPrice += topping.getToppingPrice();
             toppingsCount--;

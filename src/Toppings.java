@@ -16,7 +16,8 @@ public class Toppings {
                 case "cheese" -> new CheeseTopping("Cheese");
                 case "onion" -> new OnionTopping("Onion");
                 case "radish" -> new RadishTopping("Radish");
-                default -> new Toppings();
+ //               default -> new Toppings();
+            default -> null;
             };
     }
 
